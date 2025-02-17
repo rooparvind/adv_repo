@@ -52,4 +52,7 @@ streamlit run app.py
 The app will be accessiable at http://localhost:8501/
 
 Deploy the app to Render
+
+![alt text](<Screenshot 2025-02-17 at 11.26.14 AM-1.png>)
+
 Verify that your application is accessible at the following URL: [https://adv-repo.onrender.com](https://adv-repo.onrender.com)
