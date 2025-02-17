@@ -5,6 +5,7 @@ Project Overview
 This project focuses on analyzing a dataset of used cars, containing various attributes such as price, model year, condition, odometer reading, fuel type, and more. The goal is to clean, process, and extract insights from the data to support decision-making related to car sales and pricing trends.
 
 Data Description
+
 The dataset includes the following columns:
 price: Listed price of the vehicle.
 model_year: Year of manufacturing.
@@ -21,12 +22,14 @@ date_posted: Date when the listing was posted.
 days_listed: Number of days the vehicle has been listed for sale.
 
 Sample Use Case
+
 This dataset can be used to:
 Analyze price trends based on model year, condition, and mileage.
 Identify the most common car models and types in the used car market.
 Detect potential anomalies or inconsistencies in pricing.
 
 Project Structure
+
 data/: Contains raw and processed datasets.
 notebooks/: Jupyter notebooks for exploratory data analysis and model development.
 README.md: Project documentation.
@@ -46,7 +49,7 @@ pipenv install
 
 Run the app locally
 streamlit run app.py
-# the app will be accessiable at http://localhost:8501/
+The app will be accessiable at http://localhost:8501/
 
 Deploy the app to Render
 Verify that your application is accessible at the following URL: [https://adv-repo.onrender.com](https://adv-repo.onrender.com)
