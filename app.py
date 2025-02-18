@@ -13,7 +13,9 @@ df["price"] = df["price"].astype("Int64")
 df['days_listed'] = df['days_listed'].fillna(0)
 
 # Convert days_listed to float or int32
-df['days_listed'] = df['days_listed'].astype('float32')  # or 'int32'
+df['days_listed'] = df['days_listed'].astype('float32')  
+df['odometer'] = df['odometer'].fillna(0)
+df['odometer'] = df['odometer'].astype('float32')
 
 df['manufacturer'] = df['model'].apply(lambda x: x.split()[0])
 
