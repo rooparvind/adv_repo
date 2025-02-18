@@ -5,6 +5,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 df = pd.read_csv('vehicles_us.csv')
+df["price"] = pd.to_numeric(df["price"], errors="coerce") 
+df.dropna(subset=["price"], inplace=True)
+df["price"] = df["price"].astype("Int64") 
 df['manufacturer'] = df['model'].apply(lambda x: x.split()[0])
 
 st.header('Data viewer')
