@@ -8,6 +8,13 @@ df = pd.read_csv('vehicles_us.csv')
 df["price"] = pd.to_numeric(df["price"], errors="coerce") 
 df.dropna(subset=["price"], inplace=True)
 df["price"] = df["price"].astype("Int64") 
+
+# NaN values
+df['days_listed'] = df['days_listed'].fillna(0)
+
+# Convert days_listed to float or int32
+df['days_listed'] = df['days_listed'].astype('float32')  # or 'int32'
+
 df['manufacturer'] = df['model'].apply(lambda x: x.split()[0])
 
 st.header('Data viewer')
