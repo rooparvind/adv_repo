@@ -10,8 +10,9 @@ df["model_year"] = pd.to_numeric(df["model_year"], errors="coerce")
 df["cylinders"] = pd.to_numeric(df["cylinders"], errors="coerce") 
 
 # Handle missing values and convert data types
+df["price"].fillna(0, inplace=True)
+df["price"] = df["price"].astype("Int64")
 df['days_listed'] = df['days_listed'].fillna(0).astype('float32')
-df['price'] = df['price'].fillna(0)
 df['model_year'] = df['model_year'].fillna(0).astype("Int64")
 df['cylinders'] = df['cylinders'].fillna(0).astype("Int64")
 df['odometer'] = df['odometer'].fillna(0).astype('float32')
