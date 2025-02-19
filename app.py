@@ -8,11 +8,10 @@ df = pd.read_csv('vehicles_us.csv')
 df["price"] = pd.to_numeric(df["price"], errors="coerce") 
 df["model_year"] = pd.to_numeric(df["model_year"], errors="coerce") 
 df["cylinders"] = pd.to_numeric(df["cylinders"], errors="coerce") 
-df.dropna(subset=["price"], inplace=True)
-df["price"] = df["price"].astype("Int64") 
 
 # Handle missing values and convert data types
 df['days_listed'] = df['days_listed'].fillna(0).astype('float32')
+df['price'] = df['price'].fillna(0).astype("Int64")
 df['model_year'] = df['model_year'].fillna(0).astype("Int64")
 df['cylinders'] = df['cylinders'].fillna(0).astype("Int64")
 df['odometer'] = df['odometer'].fillna(0).astype('float32')
@@ -24,13 +23,12 @@ print(df.isnull().sum())
 
 df['manufacturer'] = df['model'].fillna("Unknown").apply(lambda x: x.split()[0])
 
-st.header('Data viewer')
 st.header("Data Viewer")
 if df.empty:
     st.write("No data available.")
 else:
     st.dataframe(df)
-    
+
 show_manuf_1k_ads = st.checkbox('Include manufacturers with less than 1000 ads')
 if not show_manuf_1k_ads:
     df = df.groupby('manufacturer').filter(lambda x: len(x) > 1000)
