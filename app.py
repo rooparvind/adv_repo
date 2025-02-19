@@ -5,13 +5,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 df = pd.read_csv('vehicles_us.csv')
-df["price"] = pd.to_numeric(df["price"], errors="coerce") 
 df["model_year"] = pd.to_numeric(df["model_year"], errors="coerce") 
+df["price"] = pd.to_numeric(df["price"], errors="coerce") 
 df["cylinders"] = pd.to_numeric(df["cylinders"], errors="coerce") 
+df['price'] = df['price'].astype('Int64') 
+
+# NaN values
+df['price'] = df['price'].fillna(0)
 
 # Handle missing values and convert data types
-df["price"].fillna(0, inplace=True)
-df["price"] = df["price"].astype("Int64")
 df['days_listed'] = df['days_listed'].fillna(0).astype('float32')
 df['model_year'] = df['model_year'].fillna(0).astype("Int64")
 df['cylinders'] = df['cylinders'].fillna(0).astype("Int64")
