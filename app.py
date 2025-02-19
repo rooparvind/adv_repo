@@ -9,41 +9,18 @@ df["price"] = pd.to_numeric(df["price"], errors="coerce")
 df.dropna(subset=["price"], inplace=True)
 df["price"] = df["price"].astype("Int64") 
 
-# NaN values
-df['days_listed'] = df['days_listed'].fillna(0)
+# Handle missing values and convert data types
+df['days_listed'] = df['days_listed'].fillna(0).astype('float32')
+df['model_year'] = df['model_year'].fillna(0).astype("Int64")
+df['cylinders'] = df['cylinders'].fillna(0).astype("Int64")
+df['odometer'] = df['odometer'].fillna(0).astype('float32')
+df['is_4wd'] = df['is_4wd'].fillna(0).astype(bool)  
+df['paint_color'] = df['paint_color'].fillna("unknown")
 
-# Convert days_listed to float or int32
-df['days_listed'] = df['days_listed'].astype('float32')  
-# NaN values
-df['days_listed'] = df['days_listed'].fillna(0)
+print(df.dtypes)
+print(df.isnull().sum())
 
-# Convert days_listed to float or int32
-df['days_listed'] = df['days_listed'].astype('float32')  
-# NaN values
-df['model_year'] = df['model_year'].fillna(0)
-
-# Convert model_year to float or float64
-df['model_year'] = df['model_year'].astype('float64') 
-
-# NaN values
-df['cylinders'] = df['cylinders'].fillna(0)
-
-# Convert cylinders to float or float64
-df['cylinders'] = df['cylinders'].astype('float64') 
-
-# NaN values
-df['paint_color'] = df['paint_color'].fillna(0)
-
-
-# NaN values
-df['is_4wd'] = df['is_4wd'].fillna(0)
-
-# Convert is_4wd to float or float64
-df['is_4wd'] = df['is_4wd'].astype('float64') 
-df['odometer'] = df['odometer'].fillna(0)
-df['odometer'] = df['odometer'].astype('float32')
-
-df['manufacturer'] = df['model'].apply(lambda x: x.split()[0])
+df['manufacturer'] = df['model'].fillna("Unknown").apply(lambda x: x.split()[0])
 
 st.header('Data viewer')
 show_manuf_1k_ads = st.checkbox('Include manufacturers with less than 1000 ads')
