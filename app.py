@@ -8,7 +8,7 @@ df = pd.read_csv('vehicles_us.csv')
 df["model_year"] = pd.to_numeric(df["model_year"], errors="coerce") 
 df["price"] = pd.to_numeric(df["price"], errors="coerce") 
 df["cylinders"] = pd.to_numeric(df["cylinders"], errors="coerce") 
-df['price'] = df['price'].astype('float32') 
+df['price'] = df['price'].astype('float64') 
 
 # NaN values
 df['price'] = df['price'].fillna(0)
