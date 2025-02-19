@@ -1,3 +1,5 @@
+Note to Reviewer: Locally this renders in the browser. I tried but same error shows up 
+
 Simple Streamlit app & deployment to Render.com
 
 Project Overview
